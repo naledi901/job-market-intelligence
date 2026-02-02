@@ -1,4 +1,3 @@
-// This is a "Blueprint". It says every job MUST have these things.
 export interface Job {
   id: string;
   title: string;
@@ -6,6 +5,7 @@ export interface Job {
   location: string;
   salaryMin: number;
   salaryMax: number;
-  skills: string[]; // This is a list of words
+  skills: string[];
   experienceLevel: 'Junior' | 'Mid' | 'Senior';
+  category: 'Development' | 'Data' | 'Cybersecurity' | 'Cloud' | 'Design'; // <-- NEW!
 }

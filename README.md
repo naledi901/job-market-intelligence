@@ -1,73 +1,134 @@
-# React + TypeScript + Vite
+# 📊 Job Market Intelligence Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔗 **Live Demo:** https://job-intelligence-tau.vercel.app  
 
-Currently, two official plugins are available:
+A real-time analytics dashboard designed to help job seekers visualize employment trends, salary ranges, and industry demand in South Africa.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-4.x-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-Build_Tool-646CFF?logo=vite&logoColor=white)
+![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?logo=vercel&logoColor=white)
 
-## Expanding the ESLint configuration
+- **React 18** – Component-based UI development  
+- **Vite** – Fast development server and optimized build tooling  
+- **TypeScript** – Type-safe, scalable codebase  
+- **Tailwind CSS** – Utility-first styling  
+- **Vercel** – Production deployment  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ✨ Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 📈 Interactive Charts
+- Visualizes employment data using a reusable **HeroChart** component  
+- Displays skill demand, salary ranges, and industry distribution  
+- Built with a scalable and modular chart architecture  
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 🎯 Smart Filtering
+- Dynamic **FilterBar** component  
+- Filter by:
+  - 📍 Location (Johannesburg, Cape Town, Remote)
+  - 🏢 Industry / Job Category
+- Real-time UI updates based on selected filters  
+
+### 📊 Key Metrics
+- InsightCards display:
+  - Experience level distribution
+  - Active job counts
+  - Market demand indicators  
+
+### 📱 Responsive Design
+- Fully responsive layout
+- Optimized for desktop, tablet, and mobile devices
+
+---
+
+## 🏗 Project Structure
+
+```bash
+src/
+│
+├── components/
+│   ├── Header.tsx
+│   ├── FilterBar.tsx
+│   ├── HeroChart.tsx
+│   ├── InsightCards.tsx
+│   └── ...
+│
+├── data/
+│   └── mockData.ts
+│
+├── App.tsx
+├── main.tsx
+└── index.css
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **components/** → Reusable UI components  
+- **data/** → Mock dataset and structured job market data  
+- **App.tsx** → Main application layout and logic  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ⚙️ Getting Started
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/naledi901/job-market-intelligence-dashboard.git
+cd job-market-intelligence-dashboard
 ```
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Run locally
+
+```bash
+npm run dev
+```
+
+The app will run on:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 📦 Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## 🎯 Project Vision
+
+The goal of this project is to bridge the gap between raw job listings and meaningful career insights by transforming structured data into actionable visual intelligence.
+
+This dashboard demonstrates:
+
+- Data-driven UI design
+- Frontend architecture with React + TypeScript
+- Real-time filtering logic
+- Scalable component design
+- Clean, modern UI implementation
+
+---
+
+## 📬 Contact
+
+**Naledi Motaung**  
+GitHub: https://github.com/naledi901  
+
+---
+
+> Built to transform job market data into intelligent career insights.

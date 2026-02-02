@@ -47,6 +47,9 @@ export default function App() {
     if (range) range.count++;
   });
 
+  // Helper to check if any filter is active (to show/hide clear button state if you wanted)
+  const isFiltering = selectedLocation !== 'All' || selectedCategory !== 'All' || selectedLevel !== 'All';
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 p-6 font-sans">
       
@@ -55,8 +58,8 @@ export default function App() {
         <h1 className="text-3xl font-extrabold text-white mb-2">SA Job Market Intelligence</h1>
         <p className="text-slate-400 mb-6">Real-time market insights for South African tech professionals.</p>
 
-        {/* THE CONTROL ROOM (3 Filters) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-900 p-4 rounded-xl border border-slate-800">
+        {/* THE CONTROL ROOM (Updated to 4 Columns) */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-900 p-4 rounded-xl border border-slate-800 items-end">
           
           {/* Location Filter */}
           <div>
@@ -104,6 +107,26 @@ export default function App() {
               <option value="Senior">Senior</option>
             </select>
           </div>
+
+          {/* Reset Button (New!) */}
+          <div>
+            <button 
+              onClick={() => {
+                setSelectedLocation('All');
+                setSelectedCategory('All');
+                setSelectedLevel('All');
+              }}
+              disabled={!isFiltering}
+              className={`w-full font-semibold py-2.5 px-4 rounded-lg transition-colors border ${
+                isFiltering 
+                  ? 'bg-red-500/10 text-red-400 border-red-500/20 hover:bg-red-500/20 cursor-pointer' 
+                  : 'bg-slate-800 text-slate-500 border-slate-700 cursor-not-allowed'
+              }`}
+            >
+              Clear Filters
+            </button>
+          </div>
+
         </div>
       </header>
 

@@ -1,80 +1,165 @@
 import type { Job } from '../types/job';
 
-export const mockJobs: Job[] = [
-  // =========================================================================
-  // CATEGORY: DEVELOPMENT (Filter: Software Development)
-  // =========================================================================
-  
-  // JOHANNESBURG (Banking/Enterprise Hub - Java, C#, Angular)
-  { id: 'dev-jhb-1', title: 'Junior Java Developer', company: 'Standard Bank', location: 'Johannesburg', salaryMin: 25000, salaryMax: 35000, skills: ['Java', 'Spring Boot', 'SQL'], experienceLevel: 'Junior', category: 'Development' },
-  { id: 'dev-jhb-2', title: 'Intermediate C# Developer', company: 'Discovery', location: 'Johannesburg', salaryMin: 45000, salaryMax: 65000, skills: ['C#', '.NET Core', 'Azure', 'SQL'], experienceLevel: 'Mid', category: 'Development' },
-  { id: 'dev-jhb-3', title: 'Senior Frontend Engineer', company: 'Nedbank', location: 'Johannesburg', salaryMin: 80000, salaryMax: 110000, skills: ['Angular', 'TypeScript', 'RxJS'], experienceLevel: 'Senior', category: 'Development' },
-  { id: 'dev-jhb-4', title: 'Full Stack Developer', company: 'FNB', location: 'Johannesburg', salaryMin: 60000, salaryMax: 90000, skills: ['Java', 'Kotlin', 'Oracle', 'Docker'], experienceLevel: 'Senior', category: 'Development' },
-  { id: 'dev-jhb-5', title: 'Graduate Developer', company: 'BBD', location: 'Johannesburg', salaryMin: 22000, salaryMax: 30000, skills: ['C#', 'Java', 'Git'], experienceLevel: 'Junior', category: 'Development' },
-  { id: 'dev-jhb-6', title: 'Solutions Architect', company: 'Absa', location: 'Johannesburg', salaryMin: 120000, salaryMax: 160000, skills: ['Architecture', 'Cloud', 'Microservices'], experienceLevel: 'Senior', category: 'Development' },
-  { id: 'dev-jhb-7', title: 'Mobile Developer (iOS)', company: 'Investec', location: 'Johannesburg', salaryMin: 50000, salaryMax: 75000, skills: ['Swift', 'SwiftUI', 'Objective-C'], experienceLevel: 'Mid', category: 'Development' },
-  { id: 'dev-jhb-8', title: 'Backend Engineer', company: 'Momentum', location: 'Johannesburg', salaryMin: 55000, salaryMax: 75000, skills: ['C#', 'SQL Server', 'Azure'], experienceLevel: 'Mid', category: 'Development' },
+// --- 1. CONFIGURATION ---
+const LOCATIONS = ['Johannesburg', 'Cape Town', 'Remote'];
 
-  // CAPE TOWN (Startup/Tech Hub - React, Python, AWS)
-  { id: 'dev-cpt-1', title: 'Junior React Dev', company: 'Yoco', location: 'Cape Town', salaryMin: 25000, salaryMax: 40000, skills: ['React', 'JavaScript', 'Tailwind'], experienceLevel: 'Junior', category: 'Development' },
-  { id: 'dev-cpt-2', title: 'Python Backend Lead', company: 'Takealot', location: 'Cape Town', salaryMin: 95000, salaryMax: 130000, skills: ['Python', 'Django', 'PostgreSQL', 'AWS'], experienceLevel: 'Senior', category: 'Development' },
-  { id: 'dev-cpt-3', title: 'Mid-Level Golang Dev', company: 'Luno', location: 'Cape Town', salaryMin: 60000, salaryMax: 85000, skills: ['Go', 'Microservices', 'GRPC'], experienceLevel: 'Mid', category: 'Development' },
-  { id: 'dev-cpt-4', title: 'Frontend Developer', company: 'GetSmarter', location: 'Cape Town', salaryMin: 40000, salaryMax: 60000, skills: ['Vue.js', 'JavaScript', 'SASS'], experienceLevel: 'Mid', category: 'Development' },
-  { id: 'dev-cpt-5', title: 'Senior PHP Developer', company: 'Woolworths', location: 'Cape Town', salaryMin: 70000, salaryMax: 95000, skills: ['PHP', 'Laravel', 'MySQL'], experienceLevel: 'Senior', category: 'Development' },
-  { id: 'dev-cpt-6', title: 'Android Engineer', company: 'SnapScan', location: 'Cape Town', salaryMin: 50000, salaryMax: 80000, skills: ['Kotlin', 'Java', 'Android SDK'], experienceLevel: 'Mid', category: 'Development' },
-  { id: 'dev-cpt-7', title: 'Software Engineer Intern', company: 'Amazon', location: 'Cape Town', salaryMin: 30000, salaryMax: 45000, skills: ['Java', 'C++', 'Algorithms'], experienceLevel: 'Junior', category: 'Development' },
-  { id: 'dev-cpt-8', title: 'Full Stack Engineer', company: 'Prodigy Finance', location: 'Cape Town', salaryMin: 65000, salaryMax: 90000, skills: ['React', 'Node.js', 'PostgreSQL'], experienceLevel: 'Senior', category: 'Development' },
+const COMPANIES = {
+  Johannesburg: ['Standard Bank', 'FNB', 'Discovery', 'Absa', 'Nedbank', 'Vodacom', 'MTN', 'Multichoice', 'Investec', 'Dimension Data'],
+  'Cape Town': ['Takealot', 'Yoco', 'Amazon AWS', 'Luno', 'GetSmarter', 'Woolworths', 'ShopriteX', 'SnapScan', 'Aerobotics', 'Prodigy Finance'],
+  Remote: ['OfferZen', 'Platform45', 'Automattic', 'Canonical', 'GitLab', 'TymeBank', 'SensePost', 'Revix', 'Meltwater', 'Derivco']
+};
 
-  // REMOTE (International/Flexible - Ruby, Rust, Web3)
-  { id: 'dev-rem-1', title: 'Remote Ruby Developer', company: 'Platform45', location: 'Remote', salaryMin: 50000, salaryMax: 75000, skills: ['Ruby', 'Rails', 'PostgreSQL'], experienceLevel: 'Mid', category: 'Development' },
-  { id: 'dev-rem-2', title: 'Senior Tech Lead', company: 'OfferZen', location: 'Remote', salaryMin: 110000, salaryMax: 150000, skills: ['React', 'Node.js', 'System Design'], experienceLevel: 'Senior', category: 'Development' },
-  { id: 'dev-rem-3', title: 'Blockchain Developer', company: 'Revix', location: 'Remote', salaryMin: 80000, salaryMax: 120000, skills: ['Solidity', 'Rust', 'Web3'], experienceLevel: 'Senior', category: 'Development' },
-  { id: 'dev-rem-4', title: 'WordPress Developer', company: 'Automattic', location: 'Remote', salaryMin: 40000, salaryMax: 60000, skills: ['WordPress', 'PHP', 'React'], experienceLevel: 'Mid', category: 'Development' },
+// --- 2. SKILL POOLS ---
+const SKILL_SETS = {
+  Development: { 
+    common: ['Git', 'Agile', 'Jira', 'CI/CD', 'Unit Testing'], 
+    frontend: ['React', 'TypeScript', 'Tailwind CSS', 'Vue.js', 'Angular', 'CSS', 'HTML5', 'Redux'],
+    backend: ['Java', 'C#', '.NET Core', 'Spring Boot', 'Node.js', 'Python', 'Go', 'PostgreSQL', 'AWS', 'Docker'],
+    mobile: ['React Native', 'Swift', 'Kotlin', 'Flutter', 'iOS', 'Android']
+  },
+  Data: { 
+    // "King" skills are handled in logic, these are the pool for the rest
+    pool: ['PowerBI', 'Tableau', 'R', 'Google Analytics', 'Spark', 'Hadoop', 'AWS Glue', 'Snowflake', 'Airflow', 'dbt', 'BigQuery', 'Kafka', 'Pandas', 'TensorFlow']
+  },
+  Cybersecurity: { 
+    pool: ['Linux', 'Networking', 'Python', 'SIEM', 'Splunk', 'Firewalls', 'Wireshark', 'Nessus', 'AppSec', 'IAM', 'Encryption', 'OWASP', 'ISO 27001', 'Risk Management']
+  },
+  Cloud: { 
+    pool: ['Linux', 'Bash', 'AWS', 'Azure', 'GCP', 'Terraform', 'Ansible', 'Docker', 'Kubernetes', 'Jenkins', 'Prometheus', 'Grafana']
+  },
+  Design: { 
+    pool: ['Figma', 'Sketch', 'Adobe XD', 'User Research', 'Wireframing', 'Prototyping', 'HTML/CSS', 'Photoshop', 'Illustrator']
+  }
+};
 
-  // =========================================================================
-  // CATEGORY: DATA (Filter: Data Analytics)
-  // =========================================================================
-  
-  { id: 'data-1', title: 'Junior Data Analyst', company: 'MultiChoice', location: 'Johannesburg', salaryMin: 25000, salaryMax: 35000, skills: ['Excel', 'SQL', 'PowerBI'], experienceLevel: 'Junior', category: 'Data' },
-  { id: 'data-2', title: 'Data Scientist', company: 'Capitec', location: 'Cape Town', salaryMin: 60000, salaryMax: 85000, skills: ['Python', 'Pandas', 'Machine Learning'], experienceLevel: 'Mid', category: 'Data' },
-  { id: 'data-3', title: 'Senior Data Engineer', company: 'Vodacom', location: 'Johannesburg', salaryMin: 90000, salaryMax: 120000, skills: ['Spark', 'Hadoop', 'AWS', 'Python'], experienceLevel: 'Senior', category: 'Data' },
-  { id: 'data-4', title: 'BI Developer', company: 'ShopriteX', location: 'Cape Town', salaryMin: 45000, salaryMax: 65000, skills: ['PowerBI', 'DAX', 'SQL Server'], experienceLevel: 'Mid', category: 'Data' },
-  { id: 'data-5', title: 'Analytics Engineer', company: 'TymeBank', location: 'Remote', salaryMin: 70000, salaryMax: 95000, skills: ['dbt', 'Snowflake', 'SQL'], experienceLevel: 'Senior', category: 'Data' },
-  { id: 'data-6', title: 'Junior Data Scientist', company: 'Discovery Insure', location: 'Johannesburg', salaryMin: 30000, salaryMax: 45000, skills: ['R', 'Python', 'Statistics'], experienceLevel: 'Junior', category: 'Data' },
-  { id: 'data-7', title: 'AI Engineer', company: 'Aerobotics', location: 'Cape Town', salaryMin: 80000, salaryMax: 110000, skills: ['TensorFlow', 'Python', 'Computer Vision'], experienceLevel: 'Senior', category: 'Data' },
-  { id: 'data-8', title: 'Database Administrator', company: 'MTN', location: 'Johannesburg', salaryMin: 50000, salaryMax: 70000, skills: ['Oracle', 'SQL', 'Linux'], experienceLevel: 'Mid', category: 'Data' },
-  { id: 'data-9', title: 'Data Analyst Intern', company: 'Mr Price', location: 'Remote', salaryMin: 15000, salaryMax: 20000, skills: ['Excel', 'Python'], experienceLevel: 'Junior', category: 'Data' },
+const ROLES = {
+  Development: ['Frontend Developer', 'Backend Developer', 'Full Stack Engineer', 'Java Developer', 'C# Developer', 'Mobile Developer', 'Software Engineer'],
+  Data: ['Data Analyst', 'Data Scientist', 'Data Engineer', 'BI Developer', 'Analytics Engineer'],
+  Cybersecurity: ['Security Analyst', 'Penetration Tester', 'SOC Analyst', 'Cyber Engineer', 'CISO'],
+  Cloud: ['Cloud Architect', 'DevOps Engineer', 'Site Reliability Engineer', 'Cloud Engineer'],
+  Design: ['UX/UI Designer', 'Product Designer', 'UX Researcher', 'Product Owner']
+};
 
-  // =========================================================================
-  // CATEGORY: CYBERSECURITY (Filter: Cybersecurity)
-  // =========================================================================
-  
-  { id: 'sec-1', title: 'Security Analyst', company: 'Dimension Data', location: 'Johannesburg', salaryMin: 35000, salaryMax: 50000, skills: ['Network Security', 'Firewalls', 'SIEM'], experienceLevel: 'Mid', category: 'Cybersecurity' },
-  { id: 'sec-2', title: 'Penetration Tester', company: 'SensePost', location: 'Remote', salaryMin: 60000, salaryMax: 90000, skills: ['Ethical Hacking', 'Burp Suite', 'Python'], experienceLevel: 'Mid', category: 'Cybersecurity' },
-  { id: 'sec-3', title: 'CISO', company: 'Absa', location: 'Johannesburg', salaryMin: 150000, salaryMax: 200000, skills: ['Governance', 'Risk', 'Compliance'], experienceLevel: 'Senior', category: 'Cybersecurity' },
-  { id: 'sec-4', title: 'Junior SOC Analyst', company: 'Liquid Intelligent', location: 'Johannesburg', salaryMin: 20000, salaryMax: 30000, skills: ['Networking', 'Linux', 'Monitoring'], experienceLevel: 'Junior', category: 'Cybersecurity' },
-  { id: 'sec-5', title: 'Cyber Security Engineer', company: 'Luno', location: 'Cape Town', salaryMin: 75000, salaryMax: 100000, skills: ['AppSec', 'Cloud Security', 'Python'], experienceLevel: 'Senior', category: 'Cybersecurity' },
-  { id: 'sec-6', title: 'Identity Access Manager', company: 'Old Mutual', location: 'Cape Town', salaryMin: 55000, salaryMax: 75000, skills: ['IAM', 'Active Directory', 'Azure AD'], experienceLevel: 'Mid', category: 'Cybersecurity' },
+// --- 3. GENERATOR FUNCTION ---
+const generateJobs = (count: number): Job[] => {
+  const jobs: Job[] = [];
 
-  // =========================================================================
-  // CATEGORY: CLOUD (Filter: Cloud & DevOps)
-  // =========================================================================
-  
-  { id: 'cloud-1', title: 'AWS Cloud Architect', company: 'Amazon', location: 'Cape Town', salaryMin: 100000, salaryMax: 140000, skills: ['AWS', 'Terraform', 'Architecture'], experienceLevel: 'Senior', category: 'Cloud' },
-  { id: 'cloud-2', title: 'DevOps Engineer', company: 'Mukuru', location: 'Cape Town', salaryMin: 65000, salaryMax: 90000, skills: ['Docker', 'Kubernetes', 'CI/CD'], experienceLevel: 'Mid', category: 'Cloud' },
-  { id: 'cloud-3', title: 'Azure Specialist', company: 'Altron', location: 'Johannesburg', salaryMin: 55000, salaryMax: 80000, skills: ['Azure', 'PowerShell', 'Active Directory'], experienceLevel: 'Mid', category: 'Cloud' },
-  { id: 'cloud-4', title: 'Junior Cloud Support', company: 'Afrihost', location: 'Johannesburg', salaryMin: 18000, salaryMax: 25000, skills: ['Linux', 'Networking', 'Troubleshooting'], experienceLevel: 'Junior', category: 'Cloud' },
-  { id: 'cloud-5', title: 'Site Reliability Engineer', company: 'Luno', location: 'Remote', salaryMin: 90000, salaryMax: 120000, skills: ['Go', 'Grafana', 'Prometheus'], experienceLevel: 'Senior', category: 'Cloud' },
-  { id: 'cloud-6', title: 'Cloud Engineer', company: 'BCX', location: 'Johannesburg', salaryMin: 50000, salaryMax: 70000, skills: ['AWS', 'Azure', 'Python'], experienceLevel: 'Mid', category: 'Cloud' },
+  for (let i = 0; i < count; i++) {
+    // A. Location & Category Logic
+    const randLoc = Math.random();
+    let location = 'Johannesburg';
+    if (randLoc > 0.45) location = 'Cape Town'; 
+    if (randLoc > 0.75) location = 'Remote';
 
-  // =========================================================================
-  // CATEGORY: DESIGN (Filter: UI/UX Design)
-  // =========================================================================
-  
-  { id: 'des-1', title: 'UX/UI Designer', company: 'VMLY&R', location: 'Cape Town', salaryMin: 35000, salaryMax: 50000, skills: ['Figma', 'Wireframing', 'Prototyping'], experienceLevel: 'Mid', category: 'Design' },
-  { id: 'des-2', title: 'Product Manager', company: 'SnapScan', location: 'Cape Town', salaryMin: 65000, salaryMax: 90000, skills: ['Agile', 'Roadmapping', 'User Research'], experienceLevel: 'Senior', category: 'Design' },
-  { id: 'des-3', title: 'Junior Graphic Designer', company: 'Ogilvy', location: 'Johannesburg', salaryMin: 15000, salaryMax: 22000, skills: ['Photoshop', 'Illustrator', 'InDesign'], experienceLevel: 'Junior', category: 'Design' },
-  { id: 'des-4', title: 'Product Owner', company: 'Mr D Food', location: 'Remote', salaryMin: 55000, salaryMax: 75000, skills: ['Scrum', 'Jira', 'User Stories'], experienceLevel: 'Mid', category: 'Design' },
-  { id: 'des-5', title: 'Senior UX Researcher', company: 'Standard Bank', location: 'Johannesburg', salaryMin: 70000, salaryMax: 95000, skills: ['User Testing', 'Research', 'Figma'], experienceLevel: 'Senior', category: 'Design' },
-  { id: 'des-6', title: 'UI Designer', company: 'Superbalist', location: 'Cape Town', salaryMin: 30000, salaryMax: 45000, skills: ['Figma', 'Sketch', 'HTML/CSS'], experienceLevel: 'Mid', category: 'Design' }
-];
+    const randCat = Math.random();
+    let category: keyof typeof ROLES = 'Development'; 
+    
+    if (location === 'Johannesburg') {
+      if (randCat < 0.50) category = 'Development';
+      else if (randCat < 0.65) category = 'Data';
+      else if (randCat < 0.80) category = 'Cybersecurity';
+      else if (randCat < 0.90) category = 'Cloud';
+      else category = 'Design';
+    } else {
+      if (randCat < 0.55) category = 'Development';
+      else if (randCat < 0.70) category = 'Design';
+      else if (randCat < 0.85) category = 'Cloud';
+      else if (randCat < 0.95) category = 'Data';
+      else category = 'Cybersecurity';
+    }
+
+    const roleTitle = ROLES[category][Math.floor(Math.random() * ROLES[category].length)];
+    const company = COMPANIES[location as keyof typeof COMPANIES][Math.floor(Math.random() * 10)];
+
+    // B. Experience & Salary
+    const randExp = Math.random();
+    let experienceLevel: 'Junior' | 'Mid' | 'Senior' = 'Mid';
+    let minSal = 35000;
+    
+    if (randExp < 0.3) {
+      experienceLevel = 'Junior';
+      minSal = 18000 + Math.floor(Math.random() * 12000); 
+    } else if (randExp > 0.7) {
+      experienceLevel = 'Senior';
+      minSal = 75000 + Math.floor(Math.random() * 45000); 
+    } else {
+      minSal = 35000 + Math.floor(Math.random() * 35000); 
+    }
+
+    // --- C. WEIGHTED SKILL GENERATION (The Fix) ---
+    const jobSkills = new Set<string>();
+    
+    // 1. DATA ANALYTICS: Force "The Big 3" to create a staircase
+    if (category === 'Data') {
+        jobSkills.add('SQL'); // 100% of Data jobs need SQL
+        if (Math.random() > 0.2) jobSkills.add('Python'); // 80% have Python
+        if (Math.random() > 0.4) jobSkills.add('Excel'); // 60% have Excel
+        if (Math.random() > 0.5) jobSkills.add('PowerBI'); // 50% have PowerBI
+        
+        // Fill the rest with niche skills (Kafka, Airflow, etc.)
+        const pool = SKILL_SETS.Data.pool;
+        while (jobSkills.size < 4 + Math.floor(Math.random() * 3)) {
+             jobSkills.add(pool[Math.floor(Math.random() * pool.length)]);
+        }
+    }
+
+    // 2. DEVELOPMENT: Force "Core Stacks" based on location
+    else if (category === 'Development') {
+        const devSkills = SKILL_SETS.Development;
+        let pool: string[] = [];
+
+        // Market Correction: JHB = Java/C#, CPT = React/Python
+        if (location === 'Johannesburg') {
+             if (Math.random() > 0.3) jobSkills.add(Math.random() > 0.5 ? 'Java' : 'C#');
+             if (Math.random() > 0.4) jobSkills.add('SQL');
+        } else if (location === 'Cape Town') {
+             if (Math.random() > 0.3) jobSkills.add('React');
+             if (Math.random() > 0.4) jobSkills.add('Python');
+        }
+
+        // Add Role Specifics
+        if (roleTitle.includes('Frontend')) pool = devSkills.frontend;
+        else if (roleTitle.includes('Backend') || roleTitle.includes('Java') || roleTitle.includes('C#')) pool = devSkills.backend;
+        else if (roleTitle.includes('Mobile')) pool = devSkills.mobile;
+        else pool = [...devSkills.frontend, ...devSkills.backend]; 
+        
+        // Fill rest
+        while (jobSkills.size < 3 + Math.floor(Math.random() * 3)) {
+            jobSkills.add(pool[Math.floor(Math.random() * pool.length)]);
+        }
+    }
+
+    // 3. OTHER CATEGORIES (General Weighting)
+    else {
+        let pool: string[] = [];
+        if (category === 'Cybersecurity') pool = SKILL_SETS.Cybersecurity.pool;
+        else if (category === 'Cloud') pool = SKILL_SETS.Cloud.pool;
+        else pool = SKILL_SETS.Design.pool;
+
+        // Force a common skill
+        if (category === 'Design') jobSkills.add('Figma');
+        if (category === 'Cloud') jobSkills.add('AWS');
+        if (category === 'Cybersecurity') jobSkills.add('Network Security'); // Generic placeholder
+
+        while (jobSkills.size < 4) {
+            jobSkills.add(pool[Math.floor(Math.random() * pool.length)]);
+        }
+    }
+
+    jobs.push({
+      id: `job-${i}`,
+      title: experienceLevel === 'Senior' ? `Senior ${roleTitle}` : experienceLevel === 'Junior' ? `Junior ${roleTitle}` : roleTitle,
+      company,
+      location,
+      salaryMin: minSal,
+      salaryMax: minSal + 10000 + Math.floor(Math.random() * 15000),
+      skills: Array.from(jobSkills),
+      experienceLevel,
+      category
+    });
+  }
+
+  return jobs;
+};
+
+export const mockJobs = generateJobs(2500);

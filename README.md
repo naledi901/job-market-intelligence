@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="https://job-intelligence-tau.vercel.app/preview.png" alt="Job Market Intelligence Dashboard Preview" />
-</p>
+
 # 📊 Job Market Intelligence Dashboard
 
 🔗 **Live Demo:** https://job-intelligence-tau.vercel.app  
